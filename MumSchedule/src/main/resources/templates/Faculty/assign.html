@@ -1,0 +1,57 @@
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Save faculty</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Faculty Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Faculty</p>
+
+    <form action="#" th:action="@{/faculty/save}"
+          th:object="${faculty}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{facultyID}" />
+
+        <input type="text" th:field="*{facultyName}"
+               class="form-control mb-4 col-4" placeholder="faculty name">
+
+        <input type="text" th:field="*{email}"
+               class="form-control mb-4 col-4" placeholder="faculty Email">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/faculty/}">Back to faculty add page</a>
+
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

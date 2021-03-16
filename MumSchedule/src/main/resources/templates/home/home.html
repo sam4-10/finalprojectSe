@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Welcome to MIU InfoSys!</h1>
+    </div>
+
+</div>
+<div class="col-lg-2 col-sm-2 col-md-2">
+    <h4>Admin Page</h4>
+    <ul class="list-inline">
+        <li class="list-group-item">
+            <form th:action="@{/admin/adminpage}" method="get">
+                <button class="btn btn-md" type="Submit">Admin Page</button>
+            </form>
+        </li>
+    </ul>
+    <h4>Faculty Page</h4>
+    <ul class="list-inline">
+        <!--        <li class="list-group-item">-->
+        <!--            <form th:action="@{/admin/course}" method="get">-->
+        <!--                <button class="btn btn-md" type="Submit">Add Course</button>-->
+        <!--            </form>-->
+        <!--        </li>-->
+        <li class="list-group-item">
+            <form th:action="@{/faculty/facultypage}" method="get">
+                <button class="btn btn-md" type="Submit">Faculty Page</button>
+            </form>
+        </li>
+    </ul>
+    <h4>Student Page</h4>
+    <ul class="list-inline">
+        <!--        <li class="list-group-item">-->
+        <!--            <form th:action="@{/admin/block}" method="get">-->
+        <!--                <button class="btn btn-md" type="Submit">Add Block</button>-->
+        <!--            </form>-->
+        <!--        </li>-->
+        <li class="list-group-item">
+            <form th:action="@{/admin/student}" method="get">
+                <button class="btn btn-md" type="Submit">Student Page</button>
+            </form>
+        </li>
+    </ul>
+</div>
+<div class="col-lg-7 col-md-7 col-sm-7">
+
+    <div class="container">
+
+        <form th:action="@{/logout}" method="get">
+            <button class="btn btn-md btn-danger btn-block" name="registration"
+                    type="Submit">Logout
+            </button>
+        </form>
+
+        <div class="panel-group" style="margin-top:40px">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span th:utext="${userName}"></span>
+                </div>
+                <div class="panel-body">
+                    <img th:src="@{/images/miu.JPG}" class="img-responsive center-block" width="400" height="400"
+                         alt="MIU"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-lg-3 col-sm-3 col-md-3">
+
+</div>
+
+
+</body>

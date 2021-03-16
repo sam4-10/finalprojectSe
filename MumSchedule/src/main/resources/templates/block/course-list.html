@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Block Directory</title>
+</head>
+<body>
+<div class="container">
+    <h3> Block Directory</h3>
+    <hr>
+    <a th:href="@{/block/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add New Course
+    </a>
+    <h3>
+        Block Name: <span th:text="${block.getBlockName()}"></span>
+    </h3>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+
+            <th>course Name</th>
+            <th>faculty list</th>
+            <th>student list</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="c : ${block.getCourses()}">
+
+            <td>
+                <!--                    <div th:text="${stats.index + 1}"></div>-->
+                <span th:text="${c.getCoursename() }"></span>
+            </td>
+
+            <td>
+                <a th:href="@{'/courses/faculties/' + ${c.getId()} }">View faculties</a>
+            </td>
+            <td>
+                <a th:href="@{'/courses/students/' + ${c.getId()} }">View students</a>
+            </td>
+
+
+            <!--            <td>-->
+            <!--                &lt;!&ndash; Add "update" button/link &ndash;&gt;-->
+            <!--                <a th:href="@{/courses/update(courseId=${course.id})}"-->
+            <!--                   class="btn btn-info btn-sm">-->
+            <!--                    Update-->
+            <!--                </a>-->
+
+            <!--                <a th:href="@{/courses/delete(courseId=${course.id})}"-->
+            <!--                   class="btn btn-danger btn-sm"-->
+            <!--                   onclick="if (!(confirm('Are you sure you want to delete this Course!?'))) return false">-->
+            <!--                    Delete-->
+            <!--                </a>-->
+
+            <!--            </td>-->
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>

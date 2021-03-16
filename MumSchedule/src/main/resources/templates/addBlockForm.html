@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>add Block Form</title>
+</head>
+<body>
+<table>
+    <div id="global">
+        <form action="#"  th:action="@{/addnewblock}" th:object="${newBlock}" method="POST">
+            <fieldset>
+                <legend>Add new Block</legend>
+                <p>
+
+                    <label for="entryName"> select entry: </label>
+                    <select th:field="*{entryName}" id="entryName" >
+                        <option value=""> select </option>
+                        <option th:each = "e : ${entryNameList} "
+                                th:value="${e}"
+                                th:text="${e}"> entry name </option>
+                    </select>
+                </p>
+                <p>
+                    <label for="blockName" > block name: </label>
+                    <input id="blockName" type="text" th:field="*{blockName}"/>
+                </p>
+                <p>
+                    <label for="FPPName" > FPP Num: </label>
+                    <input id="FPPName" type="text" th:field="*{FPPNum}"/>
+                </p>
+                <p>
+                    <label for="MppName" > MPP Num: </label>
+                    <input id="MPPName" type="text" th:field="*{MPPNum}"/>
+                </p>
+                <p>
+                    <label for="startDate" > start Date : </label>
+                    <input id="startDate" type="text" th:field="*{startDate}"/>
+                </p>
+                <p>
+                    <label for="endDate" > end Date : </label>
+                    <input id="endDate" type="text" th:field="*{endDate}"/>
+                </p>
+                <p>
+                    <input id="btnAdd" type="submit" value="add"/>
+                </p>
+            </fieldset>
+
+        </form>
+    </div>
+</table>
+</body>
+</html>

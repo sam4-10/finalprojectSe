@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Section</title>
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<h3>Section Directory</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Save Section</p>
+	
+		<form action="#" th:action="@{/sections/save}"
+						 th:object="${section}" method="POST">
+		
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{sectionID}" />
+			
+			<input type="text" th:field="*{sectionName}"
+					class="form-control mb-4 col-4" placeholder="Section Name">
+
+			<label for="course">Course</label>
+			<select class="form-control mb-4 col-4" id="course"  th:field="*{courses}" size="5" multiple="multiple" >
+				<option th:each="c : ${courses}"
+						th:value="${{c}}"
+						th:text="${c.getCoursename()}">
+				</option>
+			</select>
+
+			<button type="submit" class="btn btn-info col-2">Save</button>
+						
+		</form>
+	
+		<hr>
+		<a th:href="@{/sections/list}">Back to Section List</a>
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

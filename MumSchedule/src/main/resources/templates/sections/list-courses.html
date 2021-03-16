@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>section Directory</title>
+</head>
+<body>
+<div class="container">
+    <h3> section Directory</h3>
+    <hr>
+    <a th:href="@{/sections/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add New Course and assign section in a Block
+    </a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>course Name</th>
+            <th>faculty view </th>
+            <th>student view </th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="c : ${section.getCourses()}">
+            <td th:text="${c.getCoursename()}"/>
+            <td>
+                <a th:href="@{'/courses/faculties/' + ${c.getId()} }">View faculties</a>
+            </td>
+            <td>
+                <a th:href="@{'/courses/students/' + ${c.getId()} }">View students</a>
+            </td>
+            <!--                <td>-->
+            <!--                    <a th:href="@{'/course/faculties/' + ${block.getBlockID()} }">View faculties</a>-->
+            <!--                </td>-->
+            <!--                <td>-->
+            <!--                    <a th:href="@{'/course/students/' + ${block.getBlockID()} }">View students</a>-->
+            <!--                </td>-->
+            <!--                <td th:each="fac, i : ${course.getFacultyList()}">-->
+            <!--&lt;!&ndash;                    <div th:text="${stats.index + 1}"></div>&ndash;&gt;-->
+            <!--                    <span th:text="${fac.getFacultyName() }"></span>-->
+            <!--                </td>-->
+            <!--                <td th:each="stud, i : ${course.getStudentList()}">-->
+            <!--                    &lt;!&ndash;                    <div th:text="${stats.index + 1}"></div>&ndash;&gt;-->
+            <!--                    <span th:text="${stud.getStudentID() }"></span>-->
+            <!--                </td>-->
+
+
+
+<!--            <td>-->
+<!--                &lt;!&ndash; Add "update" button/link &ndash;&gt;-->
+<!--                <a th:href="@{/sections/showFormForUpdate(sectionId=${section.getSectionID()})}"-->
+<!--                   class="btn btn-info btn-sm">-->
+<!--                    Update-->
+<!--                </a>-->
+
+<!--                <a th:href="@{/sections/delete(sectionId=${section.getSectionID()})}"-->
+<!--                   class="btn btn-danger btn-sm"-->
+<!--                   onclick="if (!(confirm('Are you sure you want to delete this Course!?'))) return false">-->
+<!--                    Delete-->
+<!--                </a>-->
+
+<!--            </td>-->
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>

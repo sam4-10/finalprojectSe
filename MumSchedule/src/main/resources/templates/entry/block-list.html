@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Entry Directory</title>
+</head>
+<body>
+<div class="container">
+    <h3> Entry Directory</h3>
+    <hr>
+    <a th:href="@{/entries/AddEntry}"
+       class="btn btn-primary btn-sm mb-3">
+        Add New Entry
+    </a>
+    <h3>
+        Entry Name: <span th:text="${entry.getMonth()}"></span>
+        <span th:text="${entry.getYear()}"></span>
+    </h3>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Block list</th>
+            <th>section list list</th>
+            <th>course list</th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="b : ${entry.getBlockList()}">
+
+            <td>
+                <!--                    <div th:text="${stats.index + 1}"></div>-->
+                <span th:text="${b.getBlockName() }"></span>
+            </td>
+            <td>
+                <a th:href="@{'/block/sections/' + ${b.getBlockID()} }">View sections</a>
+            </td>
+            <td>
+                <a th:href="@{'/block/courses/' + ${b.getBlockID()} }">View courses</a>
+            </td>
+<!--            <td>-->
+<!--                <a th:href="@{'/courses/students/' + ${c.getId()} }">View students</a>-->
+<!--            </td>-->
+
+
+            <!--            <td>-->
+            <!--                &lt;!&ndash; Add "update" button/link &ndash;&gt;-->
+            <!--                <a th:href="@{/courses/update(courseId=${course.id})}"-->
+            <!--                   class="btn btn-info btn-sm">-->
+            <!--                    Update-->
+            <!--                </a>-->
+
+            <!--                <a th:href="@{/courses/delete(courseId=${course.id})}"-->
+            <!--                   class="btn btn-danger btn-sm"-->
+            <!--                   onclick="if (!(confirm('Are you sure you want to delete this Course!?'))) return false">-->
+            <!--                    Delete-->
+            <!--                </a>-->
+
+            <!--            </td>-->
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>

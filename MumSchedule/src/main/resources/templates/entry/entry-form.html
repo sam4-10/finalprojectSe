@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Save Entry</title>
+</head>
+<body>
+<div class="container">
+
+    <h3>Entry Directory</h3>
+    <hr>
+    <p class="h4 mb-4">Save Entry</p>
+
+    <form action="#" th:action="@{/entries/save}" th:object="${entry}" method="POST">
+        <!--Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}">
+
+        <input type="text" th:field="*{month}" class="form-control mb-4 col-4" placeholder="Entry Month">
+
+        <input type="text" th:field="*{year}" class="form-control mb-4 col-4" placeholder="Entry Year">
+
+        <label for="block">Block</label>
+        <select class="form-control mb-4 col-4" id="block"  th:field="*{blockList}" size="5" multiple="multiple" >
+            <option th:each="b : ${blocks}"
+                    th:value="${{b}}"
+                    th:text="${b.getBlockName()}">
+            </option>
+        </select>
+
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+    <hr>
+    <a th:href="@{/entries/Entrylist}"> Back to Entry List</a>
+</div>
+</body>
+</html>

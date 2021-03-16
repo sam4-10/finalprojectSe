@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Section Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Section  Directory</h3>
+	<hr>
+	
+	<!-- Add a button -->
+	<a th:href="@{/sections/showFormForAdd}"
+		class="btn btn-primary btn-sm mb-3">
+		Add New Section
+	</a>
+	
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Section Name</th>
+				<th>Courses view</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="section : ${sections}">
+			
+				<td th:text="${section.sectionName}" />
+				<td>
+					<a th:href="@{/sections/courses(sectionId=${section.sectionID}) }">View courses</a>
+				</td>
+
+
+                  <td>
+					<!-- Add "update" button/link -->
+					<a th:href="@{/sections/showFormForUpdate(sectionId=${section.sectionID})}"
+					   class="btn btn-info btn-sm">
+						Update
+					</a>
+					
+					<!-- Add "delete" button/link -->					
+					<a th:href="@{/sections/delete(sectionId=${section.sectionID})}"
+					   class="btn btn-danger btn-sm"
+					   onclick="if (!(confirm('Are you sure you want to delete this Section?'))) return false">
+						Delete
+					</a>
+					
+				</td>
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+	
+</body>
+</html>
+
+
+
