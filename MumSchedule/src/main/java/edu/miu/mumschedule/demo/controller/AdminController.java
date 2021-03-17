@@ -28,6 +28,7 @@ public class AdminController {
     private StudentService studentService;
     @Autowired
     private EntryService entryService;
+
     @GetMapping("/courseList")
     public String listCourse(Model model){
         List<Course> courses = courseService.findAll();

@@ -11,7 +11,7 @@ public class DemoApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(DemoApplication.class, args);
-//        String sam = "essey"; // secret key used by password encoding
+//        String sam = "eyuel"; // secret key used by password encoding
 //            // hash width in bits
 //
 //        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
