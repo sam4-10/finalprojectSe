@@ -1,8 +1,6 @@
 package edu.miu.mumschedule.demo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -13,6 +11,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class User {
 
 
@@ -35,10 +35,5 @@ public class User {
     @JoinColumn
     @Valid
     private Credential credential;
-
-
-
-
-
 
 }

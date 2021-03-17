@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -37,7 +38,7 @@ public class AdminController {
     }
     @GetMapping("/facultyList")
     public String facultyList(Model model){
-         List<Faculty> faculties = facultyService.findAll();
+        List<Faculty> faculties = facultyService.findAll();
         model.addAttribute("faculties",faculties );
         return "admin/addsucess";
     }
@@ -85,11 +86,19 @@ public class AdminController {
         return "block/list-blocks";
     }
     @GetMapping("/manageSchedule")
-    public String manageSchedule(Model model){
-        Entry entry=new Entry();
-        Set<Block> blocks = entry.getBlockList();
-        model.addAttribute("entry",entry);
-        model.addAttribute("blocks",blocks );
+    public String manageSchedule( Model model){
+        List<Entry> entryList=entryService.findAll();
+        List<String> entryMonth = new ArrayList<String>();
+        List<Block> blockList=new ArrayList<>();
+        for(int i=0; i<entryList.size(); i++) {
+            entryMonth.add(entryList.get(i).getMonth().toString());
+        }
+        for(int i=0; i<entryList.size(); i++) {
+            blockList.addAll(entryList.get(i).getBlockList());
+        }
+        //  List<String> blockNames=blockList.stream().map(Block::getBlockName).collect(Collectors.toList());
+        model.addAttribute("entryMonth",entryMonth);
+        model.addAttribute("blockList",blockList);
         return "schedule/manageSchedule";
     }
 }
