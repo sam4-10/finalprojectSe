@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Set;
@@ -38,7 +39,18 @@ public class AdminController {
     public String facultyList(Model model){
          List<Faculty> faculties = facultyService.findAll();
         model.addAttribute("faculties",faculties );
-        return "faculty/addsucess";
+        return "admin/addsucess";
+    }
+
+
+    @RequestMapping("/deleteFaculty")
+    public String deleteFaculty(@RequestParam("facultyID") Long id) {
+
+        facultyService.deleteById(id);
+
+
+        return "redirect:/admin/facultyList";
+
     }
 
     @GetMapping("/adminpage")
@@ -54,6 +66,18 @@ public class AdminController {
         model.addAttribute("students",students );
         return "admin/list-students";
     }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("studentId") int Id) {
+
+        // delete the student
+        studentService.deleteById(Id);
+
+        // redirect to /students/list
+        return "redirect:/admin/student";
+
+    }
+
     @GetMapping("/blockList")
     public String blockList(Model model){
         List<Block> blocks = blockService.findAll();

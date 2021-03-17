@@ -66,8 +66,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/home/log_out"))
-                .logoutSuccessUrl("/home/log_in?logout")
+                .logoutUrl("/home/logout")
+                .logoutSuccessUrl("/home/log_in")
                 .permitAll()
                 .and()
                 .exceptionHandling();
