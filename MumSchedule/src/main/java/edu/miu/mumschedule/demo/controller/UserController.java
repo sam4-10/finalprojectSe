@@ -1,9 +1,10 @@
 package edu.miu.mumschedule.demo.controller;
 
 
-import edu.miu.mumschedule.demo.service.CredentialService;
-import edu.miu.mumschedule.demo.service.RoleService;
-import edu.miu.mumschedule.demo.service.UserService;
+import edu.miu.mumschedule.demo.domain.Faculty;
+import edu.miu.mumschedule.demo.domain.Role;
+import edu.miu.mumschedule.demo.domain.Student;
+import edu.miu.mumschedule.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import edu.miu.mumschedule.demo.domain.User;
 
@@ -13,13 +14,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(value = {"/user"})
+@RequestMapping("/user")
 @SessionAttributes("email")
 public class UserController {
     @Autowired
@@ -37,20 +41,76 @@ public class UserController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    FacultyService facultyService;
 
-    @PostMapping(value = {"/add"})
-    public String addNewUser(@Valid @ModelAttribute User user, BindingResult bindingResult, Model model) throws Exception {
-        if (bindingResult.hasErrors()) {
-            return "adduser";
+    @Autowired
+    StudentService studentService;
+
+    @GetMapping("/register")
+    public String register(@ModelAttribute("user") User user){
+
+        return  "user/register";
+    }
+    @PostMapping("/save")
+    public String registerUser(@RequestParam("userType") String value,
+                               @ModelAttribute("user") @Valid User user, BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes) throws IOException, MessagingException {
+
+        if(bindingResult.hasErrors()){
+            return "user/register";
         }
-            // save product here
-        System.out.println("----------5-");
-        String encodePassword = passwordEncoder.encode(user.getCredential().getPassword());
-        model.addAttribute("email", user.getEmail());
-        user.getCredential().setPassword(passwordEncoder.encode(user.getCredential().getPassword()));
-        userService.saveUser(user);
-        System.out.println("-------------after");
-        return "Verification";
+
+        try {
+            Optional<User> availableUser = Optional.ofNullable(userService.findUserByEmail(user.getEmail()));
+            if (value.equals("1") && availableUser.isEmpty()) { // customer
+                // save user
+                Role role = new Role();
+                role.setId(2L);
+                role.setName("ROLE_FACULTY");
+                user.getCredential().setPassword(passwordEncoder.encode(user.getCredential().getPassword()));
+                user.setRole(role);
+                userService.saveUser(user);
+                Faculty faculty = new Faculty();
+                faculty.setFacultyName(user.getFirstName()+ "_" + user.getLastName());
+                faculty.setEmail(user.getEmail());
+                faculty.setUser(user);
+                facultyService.save(faculty);
+
+                System.out.println("user..........." + user.getEmail());
+                redirectAttributes.addFlashAttribute("success", "Your information have been saved successfully. In order to finalise your registration please check your email." );
+
+            } else if (value.equals("2") && availableUser.isEmpty()) { // student
+                Role role = new Role();
+                role.setId(3L);
+                role.setName("ROLE_STUDENT");
+                user.getCredential().setPassword(passwordEncoder.encode(user.getCredential().getPassword()));
+                user.setRole(role);
+                userService.saveUser(user);
+                Student student = new Student();
+                student.setUser(user);
+                student.setFirstName(user.getFirstName());
+                student.setLastName(user.getLastName());
+                student.setEmail(user.getEmail());
+                System.out.println("user..........." + user.getEmail());
+                //save user
+                studentService.save(student);
+
+                redirectAttributes.addFlashAttribute("success", "Your information have been saved successfully" );
+
+            } else if(availableUser.isPresent()){
+                redirectAttributes.addFlashAttribute("error", "This email "+user.getEmail()+" already exist" );
+                return "redirect:/user/register";
+            }
+        }catch (RuntimeException e){
+            redirectAttributes.addFlashAttribute("error", "The system found error" );
+            e.printStackTrace();
+            return "redirect:/user/register";
+
+        }
+
+
+        return "redirect:/home/log_in";
 
     }
 

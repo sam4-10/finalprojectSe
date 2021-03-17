@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Save User</title>
+</head>
+<body>
+<div class="container">
+
+    <h3>User Directory</h3>
+    <hr>
+    <p class="h4 mb-4">Save user</p>
+
+    <form action="#" th:action="@{/user/save}" th:object="${user}" method="POST">
+        <!--Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}">
+
+        <input type="text" th:field="*{firstName}" class="form-control mb-4 col-4" placeholder="first name">
+
+        <!--          <input type="text" th:field="*{courseCode}" class="form-control mb-4 col-4" placeholder="Course Code">-->
+
+        <input type="text" th:field="*{lastName}" class="form-control mb-4 col-4" placeholder="last Name">
+
+        <input type="text" th:field="*{email}" class="form-control mb-4 col-4" placeholder="email">
+<!--        <input type="hidden" th:field="*{role.id}">-->
+        <input type="text" th:field="*{credential.userName}" class="form-control mb-4 col-4" placeholder="userName">
+
+        <input type="text" th:field="*{credential.password}" class="form-control mb-4 col-4" placeholder="password">
+
+        <div class="form-group">
+            <label >Register as</label>
+            <select class="form-control" th:name="userType" >
+                <option value="">select</option>
+                <option value="1">Faculty</option>
+                <option value="2">Student</option>
+            </select>
+        </div>
+
+        <!--          <input type="hidden" th:field="*{block.facultyFacultyID}">-->
+<!--        <label for="course">Course</label>-->
+<!--        <select class="form-control mb-4 col-4" id="course"  th:field="*{courses}" size="5" multiple="multiple" >-->
+<!--            <option th:each="b : ${courses}"-->
+<!--                    th:value="${{b}}"-->
+<!--                    th:text="${b.getCoursename()}">-->
+<!--            </option>-->
+<!--        </select>-->
+<!--        <label for="section">Section</label>-->
+<!--        <select class="form-control mb-4 col-4" id="section"  th:field="*{sections}" size="5" multiple="multiple" >-->
+<!--            <option th:each="s : ${sections}"-->
+<!--                    th:value="${{s}}"-->
+<!--                    th:text="${s.getSectionName()}">-->
+<!--            </option>-->
+<!--        </select>-->
+<!--        &lt;!&ndash;          <label for="fac">Faculty</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <select class="form-control mb-4 col-4" id="fac"  th:field="*{faculties}" size="5" multiple="multiple" >&ndash;&gt;-->
+<!--        &lt;!&ndash;              <option th:each="c : ${faculties}"&ndash;&gt;-->
+<!--        &lt;!&ndash;                      th:value="${{fac}}"&ndash;&gt;-->
+<!--        &lt;!&ndash;                      th:text="${fac.getFacultyName()}">&ndash;&gt;-->
+<!--        &lt;!&ndash;              </option>&ndash;&gt;-->
+<!--        &lt;!&ndash;          </select>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <label for="stud">Student</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <select class="form-control mb-4 col-4" id="stud"  th:field="*{studentList}" size="40" multiple="multiple" >&ndash;&gt;-->
+<!--        &lt;!&ndash;              <option th:each="stud : ${students}"&ndash;&gt;-->
+<!--        &lt;!&ndash;                      th:value="${{stud}}"&ndash;&gt;-->
+<!--        &lt;!&ndash;                      th:text="${stud.getStudentID()}">&ndash;&gt;-->
+<!--        &lt;!&ndash;              </option>&ndash;&gt;-->
+<!--        &lt;!&ndash;          </select>&ndash;&gt;-->
+
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+    <hr>
+    <a th:href="@{/block/list}"> Back to Course List</a>
+</div>
+</body>
+</html>
