@@ -12,7 +12,7 @@ insert into user values(1,'sam@miu.edu','sam','tes',1,1);
 insert into user values(2,'meda@miu.com','meda','teklom',2,2);
 insert into user values(3,'mike@miu.edu','miki','desta',3,1);
 insert into user values(4,'hiwi@miu.edu','hiwi','manaye',4,3);
-insert into user values(5,'eyuel@miu.edu','eyuel','tafesse',5,1);
+insert into user values(5,'eyuel@miu.edu','eyuel','tafesse',5,3);
 
 -- ---Essey Products as Seller
 -- insert into product values(1,1,400,'Essey Product','2020-12-13',600,0,'2021-12-18','Phone',0,'Yes',0,1,40000.00,'2020-10-12',2);
@@ -45,8 +45,12 @@ insert into credentials values ( 2,'$2a$10$//Kj2zhKL1cqQ/hQ4AwQ1eDnYlhdwoijCnTOA
 insert into credentials values ( 3,'$2a$10$bzvEb5YMyBK0sBSO8.XzeujvrloBkRFHoIdnU.ZmdU3AJjMToOhRG' ,'mike');
 insert into credentials values ( 4,'$2a$10$YojEhB86z8rzZlXzK2xLx.GoAx1MQW9nOQim2fYNymSrrzvRyx3z.' ,'hiwi');
 insert into credentials values ( 5,'$2a$10$qJqXfSzNusPrzSMGIEBhjuHW6g5URj9h0wpcUO.uBgjU5eNWVfrBS' ,'eyuel');
-
-
+-- insert student id ,email, fname, lname, studentid,userid
+insert into student values ( 1,'hiwi@miu.edu','hiwi','manaye',111178,4);
+insert into student values ( 2,'eyuel@miu.edu','eyuel','tafesse',111179,5);
+-- insert faculty id, email,name,userid
+insert into faculty values ( 1,'meda@miu.com','meda_teklom',2);
+insert into faculty values ( 2,'mike@miu.edu','miki_desta',3);
 -- --- Inserted Photos for products on Essey
 -- insert into product_photos values ( 1,'/images/product-photos/2/phone.jpg');
 -- insert into product_photos values ( 2,'/images/product-photos/2/toyota.jpg');
