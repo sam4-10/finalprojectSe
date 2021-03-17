@@ -18,23 +18,7 @@ insert into user values(5,'eyuel@miu.edu','eyuel','tafesse',5,3);
 -- insert into product values(1,1,400,'Essey Product','2020-12-13',600,0,'2021-12-18','Phone',0,'Yes',0,1,40000.00,'2020-10-12',2);
 -- insert into product values(2,0,400,'Essey Product','2021-03-20',0.00,0,'2021-12-14','Toyota',0,'Yes',0,0,40000.00,'2020-12-12',2);
 -- insert into product values(3,0,400,'Essey Product','2021-03-20',0.00,0,'2021-12-14','Table',0,'Yes',0,0,40000.00,'2020-12-12',2);
---
 
---Dawit As a Seller Products
-
--- insert into product values(4,0,400,'Dawit Product','2021-03-20',0.00,0,'2021-12-14','Laptop',0,'Yes',0,0,40000.00,'2020-12-12',3);
--- insert into product values(5,0,400,'Dawit Product','2021-03-20',0.00,0,'2021-12-14','Hyundai',0,'Yes',0,0,40000.00,'2020-12-12',3);
--- insert into product values(6,0,400,'Dawit Product','2021-03-20',0.00,0,'2021-12-14','Sofa',0,'Yes',0,0,40000.00,'2020-12-12',3);
---
--- insert into deposit_payment values (1,'2021-01-02','5678908765378965','565','400',0,'essey',null,1,3);
---
--- insert into bid values ( 1,2 );
--- insert into bid_user values ( 1,600,3 );
--- insert into USER_WON_PRODUCTS values(3,1);
--- insert into bid_history values ( 1,600,'2020-12-14',1,3);
--- insert into bid values(1,1);
--- -- insert into product values(2,'perfect product','322868_1100-1100x628.jpg','car',0,0,20000,'2020-03-02',1);
--- -- insert into product values(3,'perfect product','322868_1100-1100x628.jpg','car',0,0,20000,'2020-03-02',1);
 SET foreign_key_checks = 0;
 
 
@@ -46,28 +30,48 @@ insert into credentials values ( 3,'$2a$10$bzvEb5YMyBK0sBSO8.XzeujvrloBkRFHoIdnU
 insert into credentials values ( 4,'$2a$10$YojEhB86z8rzZlXzK2xLx.GoAx1MQW9nOQim2fYNymSrrzvRyx3z.' ,'hiwi');
 insert into credentials values ( 5,'$2a$10$qJqXfSzNusPrzSMGIEBhjuHW6g5URj9h0wpcUO.uBgjU5eNWVfrBS' ,'eyuel');
 -- insert student id ,email, fname, lname, studentid,userid
-insert into student values ( 1,'hiwi@miu.edu','hiwi','manaye',111178,4);
-insert into student values ( 2,'eyuel@miu.edu','eyuel','tafesse',111179,5);
--- insert faculty id, email,name,userid
-insert into faculty values ( 1,'meda@miu.com','meda_teklom',2);
-insert into faculty values ( 2,'mike@miu.edu','miki_desta',3);
--- --- Inserted Photos for products on Essey
--- insert into product_photos values ( 1,'/images/product-photos/2/phone.jpg');
--- insert into product_photos values ( 2,'/images/product-photos/2/toyota.jpg');
--- insert into product_photos values ( 3,'/images/product-photos/2/Table.jpg');
+-- insert into student values ( 1,'hiwi@miu.edu','hiwi','manaye',111178,4);
+-- insert into student values ( 2,'eyuel@miu.edu','eyuel','tafesse',111179,5);
+-- -- insert faculty id, email,name,userid
+-- insert into faculty values ( 1,'meda@miu.com','meda_teklom',2);
+-- insert into faculty values ( 2,'mike@miu.edu','miki_desta',3);
+--
+-- -- insert in to entry id,month,year
+-- insert into entry values ( 1,'february','2020');
+-- insert into entry values ( 2,'august','2020');
 --
 --
--- ---Inserted Photos for Seller Dawit
--- insert into product_photos values ( 4,'/images/product-photos/3/laptop.jpg');
--- insert into product_photos values ( 4,'/images/product-photos/3/laptop2.jpg');
--- insert into product_photos values ( 5,'/images/product-photos/3/hyudai.jpeg');
--- insert into product_photos values ( 6,'/images/product-photos/3/sofa.jpg');
+-- -- insert in to block id,name,enddate,startdate,entryid
+-- insert into block values ( 1,'block1','2020-02-28 00:00:00.000000','2020-02-05 00:00:00.000000',1);
+-- insert into block values ( 2,'block2','2020-03-28 00:00:00.000000','2020-03-05 00:00:00.000000',1);
+-- insert into block values ( 3,'block3','2020-04-28 00:00:00.000000','2020-04-05 00:00:00.000000',1);
+-- insert into block values ( 4,'block4','2020-05-28 00:00:00.000000','2020-05-05 00:00:00.000000',1);
 --
+-- insert into block values ( 5,'block1','2020-02-28 00:00:00.000000','2020-02-05 00:00:00.000000',2);
+-- insert into block values ( 6,'block2','2020-03-28 00:00:00.000000','2020-03-05 00:00:00.000000',2);
+-- insert into block values ( 7,'block3','2020-04-28 00:00:00.000000','2020-04-05 00:00:00.000000',2);
+-- insert into block values ( 8,'block4','2020-05-28 00:00:00.000000','2020-05-05 00:00:00.000000',2);
 --
--- ------------------ Poducts Catagory----------
--- insert into product_categories values(3,3);
--- insert into product_categories values(2,2);
--- insert into product_categories values(1,1);
--- insert into product_categories values(4,1);
--- insert into product_categories values(5,2);
--- insert into product_categories values(6,3);
+-- -- insert in to section id,name,blockid
+-- insert into section values ( 1,'section1',1);
+-- insert into section values ( 2,'section2',1);
+-- insert into section values ( 3,'section1',2);
+-- insert into section values ( 4,'section2',2);
+--
+-- -- insert in to course, id,name, coursecode, enddate,startdate,sectionid,blockid
+-- insert into course values ( 1,'fpp','cs390','2020-02-28 00:00:00.000000','2020-02-05 00:00:00.000000',1,1);
+-- insert into course values ( 2,'fpp','cs390','2020-02-28 00:00:00.000000','2020-02-05 00:00:00.000000',1,1);
+-- insert into course values ( 3,'mpp','cs390','2020-02-28 00:00:00.000000','2020-02-05 00:00:00.000000',2,2);
+-- insert into course values ( 4,'mpp','cs390','2020-02-28 00:00:00.000000','2020-02-05 00:00:00.000000',2,2);
+--
+-- -- insert in to course_faculty courseid,facultyid
+-- insert into course_faculty values ( 1,1);
+-- insert into course_faculty values ( 2,2);
+-- insert into course_faculty values ( 3,1);
+-- insert into course_faculty values ( 4,2);
+--
+-- -- insert in to course_student courseid,studentid
+-- insert into course_student values ( 1,1);
+-- insert into course_student values ( 2,2);
+-- insert into course_student values ( 3,1);
+-- insert into course_student values ( 4,2);

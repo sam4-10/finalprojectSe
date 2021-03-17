@@ -5,16 +5,18 @@ package edu.miu.mumschedule.demo.controller;
 
 import edu.miu.mumschedule.demo.domain.*;
 import edu.miu.mumschedule.demo.service.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -30,34 +32,25 @@ public class AdminController {
     @Autowired
     private EntryService entryService;
 
-    @GetMapping("/courseList")
-    public String listCourse(Model model){
-        List<Course> courses = courseService.findAll();
-        model.addAttribute("courses",courses);
-        return "students/list-courses";
-    }
-    @GetMapping("/facultyList")
-    public String facultyList(Model model){
-        List<Faculty> faculties = facultyService.findAll();
-        model.addAttribute("faculties",faculties );
-        return "admin/addsucess";
-    }
 
-
-    @RequestMapping("/deleteFaculty")
-    public String deleteFaculty(@RequestParam("facultyID") Long id) {
-
-        facultyService.deleteById(id);
-
-
-        return "redirect:/admin/facultyList";
-
-    }
 
     @GetMapping("/adminpage")
     public String Adminpage(Model model){
 //        List<Faculty> faculties = facultyService.findAll();
 //        model.addAttribute("faculties",faculties );
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String username = " ";
+        Collection<? extends GrantedAuthority> authority = new ArrayList<>();
+        if (principal instanceof UserDetails) {
+             username = ((UserDetails)principal).getUsername();
+            authority = ((UserDetails)principal).getAuthorities();
+        } else {
+            username = principal.toString();
+
+        }
+        System.out.println("username........" + username);
+        System.out.println("authority........" + Arrays.toString(authority.toArray()));
         return "admin/adminpage";
     }
 
@@ -100,5 +93,28 @@ public class AdminController {
         model.addAttribute("entryMonth",entryMonth);
         model.addAttribute("blockList",blockList);
         return "schedule/manageSchedule";
+    }
+    @GetMapping("/courseList")
+    public String listCourse(Model model){
+        List<Course> courses = courseService.findAll();
+        model.addAttribute("courses",courses);
+        return "students/list-courses";
+    }
+    @GetMapping("/facultyList")
+    public String facultyList(Model model){
+        List<Faculty> faculties = facultyService.findAll();
+        model.addAttribute("faculties",faculties );
+        return "admin/addsucess";
+    }
+
+
+    @RequestMapping("/deleteFaculty")
+    public String deleteFaculty(@RequestParam("facultyID") Long id) {
+
+        facultyService.deleteById(id);
+
+
+        return "redirect:/admin/facultyList";
+
     }
 }

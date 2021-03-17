@@ -93,6 +93,7 @@ public class UserController {
                 student.setLastName(user.getLastName());
                 student.setEmail(user.getEmail());
                 System.out.println("user..........." + user.getEmail());
+                System.out.println("student.............." + student);
                 //save user
                 studentService.save(student);
 
