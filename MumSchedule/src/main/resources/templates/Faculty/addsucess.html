@@ -32,6 +32,7 @@
         <tr>
             <th>faculty Name</th>
             <th>Email</th>
+            <th>User</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -41,7 +42,7 @@
 
             <td th:text="${f.facultyName}" />
             <td th:text="${f.email}" />
-
+            <td th:text="${f.user.getFirstName()}" />
 
             <td>
                 <!-- Add "update" button/link -->

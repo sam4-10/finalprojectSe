@@ -3,7 +3,9 @@ package edu.miu.mumschedule.demo.controller;
 import java.util.List;
 
 import edu.miu.mumschedule.demo.domain.Student;
+import edu.miu.mumschedule.demo.domain.User;
 import edu.miu.mumschedule.demo.service.StudentService;
+import edu.miu.mumschedule.demo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/students")
 public class StudentRegController {
+	private UserService userService;
 private StudentService studentService;
 	
 	public StudentRegController(StudentService studentService) {
@@ -41,8 +44,16 @@ private StudentService studentService;
 		
 		// create model attribute to bind form data
 		Student theStudent = new Student();
+		User user = new User();
+	//	User email = userService.findUserByEmail("");
+		theModel.addAttribute("user",user);
 		
 		theModel.addAttribute("student", theStudent);
+
+//		if (email.equals(user.getEmail())) {
+//
+//
+//		}
 		
 		return "students/student-form";
 	}
