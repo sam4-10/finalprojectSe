@@ -66,7 +66,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUserByCredentialUserName(userName);
     }
 
-
+    @Override
+    public  User findById(Long credentialId) {
+        Optional<User>  user = userRepository.findById(credentialId);
+        return user.get();
+    }
 
 
 }

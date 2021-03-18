@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Welcome to MIU Student Page!</h1>
+    </div>
+
+</div>
+<div class="col-lg-2 col-sm-2 col-md-2">
+    <h4> User</h4>
+    <ul class="list-inline">
+<!--        <li  class="list-group-item">-->
+<!--            <form th:action="@{/stu/studentpage}" method="get">-->
+<!--                <button class="btn btn-md" type="Submit">stu</button>-->
+<!--            </form>-->
+<!--        </li>-->
+        <li class="list-group-item">
+            <form th:action="@{/students/profile}" method="get">
+                <button class="btn btn-md" type="Submit">Students profile</button>
+            </form>
+        </li>
+    </ul>
+    <h4>List of Courses</h4>
+    <ul class="list-inline">
+        <!--        <li class="list-group-item">-->
+        <!--            <form th:action="@{/admin/course}" method="get">-->
+        <!--                <button class="btn btn-md" type="Submit">Add Course</button>-->
+        <!--            </form>-->
+        <!--        </li>-->
+        <li class="list-group-item">
+            <form th:action="@{/students/courseList}" method="get">
+                <button class="btn btn-md" type="Submit">List Courses</button>
+            </form>
+        </li>
+    </ul>
+    <h4>List Blocks</h4>
+    <ul class="list-inline">
+        <!--        <li class="list-group-item">-->
+        <!--            <form th:action="@{/admin/block}" method="get">-->
+        <!--                <button class="btn btn-md" type="Submit">Add Block</button>-->
+        <!--            </form>-->
+        <!--        </li>-->
+        <li class="list-group-item">
+            <form th:action="@{/students/list-view}" method="get">
+                <button class="btn btn-md" type="Submit">Manage Blocks</button>
+            </form>
+        </li>
+    </ul>
+<!--    <h4>Manage Entries</h4>-->
+<!--    <ul class="list-inline">-->
+<!--        <li class="list-group-item">-->
+<!--            <form th:action="@{/entries/list}" method="get">-->
+<!--                <button class="btn btn-md" type="Submit">Manage Entries</button>-->
+<!--            </form>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <h4>Manage Schedule</h4>-->
+<!--    <ul class="list-inline">-->
+<!--        <li class="list-group-item">-->
+<!--            <form th:action="@{/admin/manageSchedule}" method="get">-->
+<!--                <button class="btn btn-md" type="Submit">Manage Schedule</button>-->
+<!--            </form>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <h4>Manage Sections</h4>-->
+<!--    <ul class="list-group">-->
+<!--        <li class="list-group-item">Sections</li>-->
+<!--    </ul>-->
+<!--    <h4>Generate Report</h4>-->
+<!--    <ul class="list-group">-->
+<!--        <li class="list-group-item">Reports</li>-->
+<!--        <li> <a href="/home/">Back to Home Page</a></li>-->
+<!--    </ul>-->
+</div>
+<div class="col-lg-7 col-md-7 col-sm-7">
+
+    <div class="container">
+
+        <form th:action="@{/logout}" method="get">
+            <button class="btn btn-md btn-danger btn-block" name="registration"
+                    type="Submit">Logout
+            </button>
+        </form>
+
+        <div class="panel-group" style="margin-top:40px">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span th:utext="${userName}"></span>
+                </div>
+                <div class="panel-body">
+                    <img th:src="@{/image/miu.jpg}" class="img-responsive center-block" width="400" height="400"
+                         alt="MIU"/>
+
+                </div>
+                <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-lg-3 col-sm-3 col-md-3">
+
+</div>
+
+
+</body>
+</html>>

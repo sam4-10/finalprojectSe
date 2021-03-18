@@ -46,7 +46,7 @@ public class UserController {
 
     @Autowired
     StudentService studentService;
-
+     int stdId = 11111;
     @GetMapping("/register")
     public String register(@ModelAttribute("user") User user){
 
@@ -92,6 +92,9 @@ public class UserController {
                 student.setFirstName(user.getFirstName());
                 student.setLastName(user.getLastName());
                 student.setEmail(user.getEmail());
+                 stdId++;
+                student.setStudentID(stdId);
+               // ++ stdId;
                 System.out.println("user..........." + user.getEmail());
                 System.out.println("student.............." + student);
                 //save user

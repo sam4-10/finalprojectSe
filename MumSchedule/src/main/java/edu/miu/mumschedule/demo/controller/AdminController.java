@@ -54,12 +54,12 @@ public class AdminController {
         return "admin/adminpage";
     }
 
-    @GetMapping("/student")
-    public String studentList(Model model){
-        List<Student> students = studentService.findAll();
-        model.addAttribute("students",students );
-        return "admin/list-students";
-    }
+//    @GetMapping("/student")
+//    public String studentList(Model model){
+//        List<Student> students = studentService.findAll();
+//        model.addAttribute("students",students );
+//        return "home/studentpage";
+//    }
 
     @GetMapping("/delete")
     public String delete(@RequestParam("studentId") int Id) {

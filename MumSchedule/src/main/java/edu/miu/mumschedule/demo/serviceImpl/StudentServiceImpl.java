@@ -54,4 +54,15 @@ public class StudentServiceImpl implements StudentService {
 
 	}
 
+	@Override
+	public Student findByName(String userName) {
+		return studentDao.findStudentByName(userName);
+	}
+
+
+	@Override
+	public Student findStudentByEmail(String email) {
+		return studentDao.findStudentByEmail(email);
+	}
+
 }
