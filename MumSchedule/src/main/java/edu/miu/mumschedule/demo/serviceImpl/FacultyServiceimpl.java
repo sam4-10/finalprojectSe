@@ -5,10 +5,8 @@ import edu.miu.mumschedule.demo.dao.FacultyRepository;
 import edu.miu.mumschedule.demo.domain.Faculty;
 import edu.miu.mumschedule.demo.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,5 +44,11 @@ public class FacultyServiceimpl implements FacultyService {
             Optional<Faculty> faculty = facultyRepository.findById(id);
         return faculty.get();
     }
+
+    @Override
+    public Faculty findByName(String userName) {
+        return facultyRepository.findFacultyByName(userName);
+    }
+
 
 }

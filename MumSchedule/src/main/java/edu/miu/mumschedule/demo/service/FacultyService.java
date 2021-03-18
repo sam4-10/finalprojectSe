@@ -6,7 +6,6 @@ package edu.miu.mumschedule.demo.service;
 import edu.miu.mumschedule.demo.domain.Faculty;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface FacultyService {
    void deleteById(Long id);
@@ -18,4 +17,6 @@ public interface FacultyService {
     List<Faculty> findAll();
 
     Faculty findById(Long id);
+
+    Faculty findByName(String userName);
 }
