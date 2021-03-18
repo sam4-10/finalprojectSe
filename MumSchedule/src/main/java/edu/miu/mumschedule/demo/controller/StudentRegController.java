@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -163,38 +164,21 @@ public String studentpage(Model model){
 	}
 
 	@PostMapping("/save2")
-	public String saveStudent1(@ModelAttribute("student") Student student) {
+	public String saveStudent1(@ModelAttribute("student") Student student, RedirectAttributes redirectAttributes) {
 		System.out.println("student............" + student);
 		// save the student
 		studentService.save(student);
 
 		// use a redirect to prevent duplicate submissions
-		return "redirect:/students/listView";
+	//	"redirect:/accounts/{id}";
+		redirectAttributes.addFlashAttribute("student",student);
+		return "redirect:/students/studentpage";
 	}
 
 	@GetMapping("/listView")
 	public String listEmployees1(Model theModel) {
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		String username = " ";
-//		Collection<? extends GrantedAuthority> authority = new ArrayList<>();
-//		if (principal instanceof UserDetails) {
-//			username = ((UserDetails)principal).getUsername();
-//			authority = ((UserDetails)principal).getAuthorities();
-//		} else {
-//			username = principal.toString();
-//		}
-//		System.out.println("username........" + username);
-//		System.out.println("authority........" + Arrays.toString(authority.toArray()));
-//		// get student from db
-//		Optional<Credential> credential = credentialService.findByUserName(username);
-//		System.out.println("credential>>>>>>>>>>>>>>>>>>"+ credential.get().getCredentialId());
-//
-////		Optional<User> users = userService.findUserById(credential.get().getCredentialId());
-////		User user = users.get();
-////		System.out.println("user<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + user.getEmail());
-////		Student students = studentService.findStudentByEmail(user.getEmail());
-//		System.out.println("student ,,,,,,,,,,,,,,,," + students);
-List<Student> students = studentService.findAll();
+
+     List<Student> students = studentService.findAll();
 		// add to the spring model
 		theModel.addAttribute("students1", students);
 
