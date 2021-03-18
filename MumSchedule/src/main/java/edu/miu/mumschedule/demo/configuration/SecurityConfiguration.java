@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .frameOptions().sameOrigin()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/SE_Final_Project-1/SE_Final_Project/src/resources/static/**", "/images/**", "/css/**","/home/log_in","/user/**", "/auction/public/**").permitAll()
+                .antMatchers("/SE_Final_Project-1/SE_Final_Project/src/resources/static/**", "/images/**","/image/**", "/css/**","/home/log_in","/user/**", "/auction/public/**").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
                .antMatchers("/faculty/**").hasAuthority("ROLE_FACULTY")
                 .antMatchers("/students/**").hasAuthority("ROLE_STUDENT")

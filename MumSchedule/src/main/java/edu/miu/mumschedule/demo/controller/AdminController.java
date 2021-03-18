@@ -12,9 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -54,13 +52,39 @@ public class AdminController {
         return "admin/adminpage";
     }
 
-//    @GetMapping("/student")
-//    public String studentList(Model model){
-//        List<Student> students = studentService.findAll();
-//        model.addAttribute("students",students );
-//        return "home/studentpage";
-//    }
+    @GetMapping("/student")
+    public String studentList(Model model){
+        List<Student> students = studentService.findAll();
+        model.addAttribute("students",students );
+        return "admin/list-students";
+    }
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model theModel) {
 
+        // create model attribute to bind form data
+        Student theStudent = new Student();
+        User user = new User();
+        //	User email = userService.findUserByEmail("");
+        theModel.addAttribute("user",user);
+
+        theModel.addAttribute("student", theStudent);
+
+//		if (email.equals(user.getEmail())) {
+//
+//
+//		}
+
+        return "admin/student-form";
+    }
+    @PostMapping("/save")
+    public String saveStudent(@ModelAttribute("student") Student student) {
+
+        // save the student
+        studentService.save(student);
+
+        // use a redirect to prevent duplicate submissions
+        return "redirect:/admin/list";
+    }
     @GetMapping("/delete")
     public String delete(@RequestParam("studentId") int Id) {
 
@@ -94,6 +118,18 @@ public class AdminController {
         model.addAttribute("blockList",blockList);
         return "schedule/manageSchedule";
     }
+    @GetMapping("/list")
+    public String listEmployees(Model theModel) {
+
+        // get student from db
+        List<Student> students = studentService.findAll();
+
+        // add to the spring model
+        theModel.addAttribute("students", students);
+
+        return "admin/list-students";
+    }
+
     @GetMapping("/courseList")
     public String listCourse(Model model){
         List<Course> courses = courseService.findAll();
