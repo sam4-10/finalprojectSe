@@ -3,6 +3,7 @@ package edu.miu.mumschedule.demo.controller;
 
 import edu.miu.mumschedule.demo.domain.Course;
 import edu.miu.mumschedule.demo.domain.Faculty;
+import edu.miu.mumschedule.demo.domain.Student;
 import edu.miu.mumschedule.demo.domain.User;
 import edu.miu.mumschedule.demo.service.CourseService;
 import edu.miu.mumschedule.demo.service.FacultyService;
@@ -12,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Arrays;
 import java.util.List;
@@ -52,19 +54,34 @@ public class FacultyController {
         return "/Faculty/assign";
     }
     @PostMapping("/savefaculty")
-    public String saveLoggedFaculty() {
-        Faculty faculty=getLoggedInFaculty();
+    public String saveLoggedFaculty(@ModelAttribute("faculty") Faculty faculty, RedirectAttributes redirectAttributes) {
+      //  Faculty faculty=getLoggedInFaculty();
         facultyService.save(faculty);
-        return "redirect:/faculty/loggedFaculty";
+        redirectAttributes.addFlashAttribute("faculty",faculty);
+        return "redirect:/faculty/facultypage";
     }
     @PostMapping("/save")
     public String saveCourse(@ModelAttribute("faculty") Faculty faculty) {
         facultyService.save(faculty);
         return "redirect:/faculty/";
     }
+//    @GetMapping("/showFormForUpdate1")
+//    public String showFormForUpdate1(@RequestParam("studentId") int Id,
+//                                     Model theModel) {
+//
+//        // get the student from the service
+//        Student student = studentService.findById(Id);
+//
+//        // set student as a model attribute to pre-populate the form
+//        theModel.addAttribute("student1", student);
+//
+//        // send over to our form
+//        return "students/student-form-view";
+//    }
     @GetMapping("/updateProfile")
-    public String updateprofile(Model model) {
-        Faculty faculty = getLoggedInFaculty();
+    public String updateprofile(@RequestParam("facultyId") long Id ,Model model) {
+        Faculty faculty = facultyService.findById(Id);
+      //  Faculty faculty = getLoggedInFaculty();
         model.addAttribute("faculty", faculty);
         return "/faculty/assignLogged";
     }
