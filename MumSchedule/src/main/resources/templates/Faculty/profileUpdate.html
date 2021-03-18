@@ -24,31 +24,30 @@
         <tr>
             <th>faculty Name</th>
             <th>Email</th>
+            <th>User</th>
             <th>Action</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="f : ${faculty}">
+        <tr ${faculty}>
 
-            <td th:text="${f.facultyName}" />
-            <td th:text="${f.email}" />
+            <td th:text="${faculty.facultyName}" />
+            <td th:text="${faculty.email}" />
+            <td th:text="${faculty.user.getFirstName()}" />
 
 
             <td>
                 <!-- Add "update" button/link -->
-                <a th:href="@{/faculty/update(facultyID=${f.facultyID})}"
+                <!--<a th:href="@{/faculty/update(facultyID=${f.facultyID})}"
+                   class="btn btn-info btn-sm">
+                    Update
+                </a>-->
+
+                <a th:href="@{/faculty/updateProfile}"
                    class="btn btn-info btn-sm">
                     Update
                 </a>
-
-                <!-- Add "delete" button/link -->
-                <a th:href="@{/faculty/deleteFaculty(facultyID=${f.facultyID})}"
-                   class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('Are you sure you want to delete this Faculty?'))) return false">
-                    Delete
-                </a>
-
             </td>
 
 

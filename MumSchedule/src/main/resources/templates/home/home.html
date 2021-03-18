@@ -54,8 +54,8 @@
         <!--            </form>-->
         <!--        </li>-->
         <li class="list-group-item">
-            <div sec:authorize="hasRole('ROLE_Student')">
-            <form th:action="@{/admin/student}" method="get">
+            <div sec:authorize="hasRole('ROLE_STUDENT')">
+            <form th:action="@{/students/studentpage}" method="get">
                 <button class="btn btn-md" type="Submit">Student Page</button>
             </form>
             </div>

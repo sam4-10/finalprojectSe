@@ -20,12 +20,12 @@
     <h3>faculty  Directory</h3>
     <hr>
 
-    <!-- Add a button -->
+<!--     Add a button-->
 <!--    <a th:href="@{/faculty/assignFaculty}"-->
 <!--       class="btn btn-primary btn-sm mb-3">-->
 <!--        Add New faculty-->
 <!--    </a>-->
-
+    <p>Admin views registered Faculties.</p>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -48,9 +48,12 @@
 <!--                <a th:href="@{/admin/update(facultyID=${f.facultyID})}"-->
 <!--                   class="btn btn-info btn-sm">-->
 <!--                    Update-->
-<!--                </a>-->
+<!--                </a>
 <td>
+-->
+
                 <!-- Add "delete" button/link -->
+            <td>
                 <a th:href="@{/admin/deleteFaculty(facultyID=${f.facultyID})}"
                    class="btn btn-danger btn-sm"
                    onclick="if (!(confirm('Are you sure you want to delete this Student?'))) return false">

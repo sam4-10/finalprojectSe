@@ -8,24 +8,39 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Request Sent</title>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h3>Student Page</h3>
-    <img th:src="@{/resources/miu.JPG}" alt="image" width="600" height="400"/>
-
-    <div>  <img alt="miu" src="/SE_Final_Project-1/SE_Final_Project/src/resourcesProject-1/SE_Final_Project/src/resources/miu.png"></div>
-
-    <a th:href="@{/studentpage/courseList}">Courses you Registered</a>
+    <h3>Request Sent</h3>
     <hr>
-    <a th:href="@{/faculty/}">Faculties </a>
-    <hr>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Request Has Been  Sent...</th>
+            <p>You will be notified by Admin</p>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ${msg}>
+
+            <td th:text="${msg}" />
+
+        </tr>
+        </tbody>
+    </table>
 
 </div>
-</body>
 
+</body>
 </html>
+
+
 

@@ -36,19 +36,38 @@
                    class="btn btn-info btn-sm">
                     Update
                 </a>
-
-                <a th:href="@{/courses/delete(courseId=${course.id})}"
-                   class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('Are you sure you want to delete this Course!?'))) return false">
-                    Delete
-                </a>
-
             </td>
         </tr>
         </tbody>
 
     </table>
+    <table>
+        <div id="global">
+            <h4>Faculty Chooses preffered Course</h4>
 
+            <form action="#" th:action="@{/faculty/courses}" method="GET">
+
+                <p>Select a course</p>
+                <select th:field="*{allCourses}">
+                    <option value="default">Select a course</option>
+                    <option th:each="b:${allCourses }" th:value="${b.getCoursename() }" th:text="${b.getCoursename()}"/>
+                </select>
+                </br>
+                </br>
+                <a th:href="@{/faculty/msg}"
+                   class="btn btn-primary btn-sm mb-3">
+                    Add to Preffered courses List
+                </a>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+
+            </form>
+        </div>
+    </table>
 </div>
+
 </body>
 </html>

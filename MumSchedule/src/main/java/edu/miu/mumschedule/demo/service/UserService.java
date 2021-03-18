@@ -22,6 +22,5 @@ public interface UserService {
     User finduserByName(String userName);
 
 
-
-
+    User findById(Long credentialId);
 }

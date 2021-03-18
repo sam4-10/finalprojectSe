@@ -38,7 +38,7 @@
           <select class="form-control mb-4 col-4" id="stud"  th:field="*{studentList}" size="40" multiple="multiple" >
               <option th:each="stud : ${students}"
                       th:value="${{stud}}"
-                      th:text="${stud.getStudentID()}">
+                      th:text="${stud.getFirstName()}">
               </option>
           </select>
 

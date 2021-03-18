@@ -13,4 +13,9 @@ public List<Student> findAll();
 	public void save(Student theEmployee);
 	
 	public void deleteById(int theId);
+	 Student findByName(String userName);
+
+  //  Student findByEmail(String email);
+
+	Student findStudentByEmail(String email);
 }
