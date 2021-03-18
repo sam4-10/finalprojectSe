@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html data-layout-decorator="layout/masterlayout"
       xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        body {
+            background-color: aquamarine;
+            background-image: url("static/img/miup.jpg");
+            /*background-image: ;*/
+        }
+        #username {
+            margin: 10px;
+        }
+        .btn.btn btn-primary {
+            margin-right: 10px;
+        }
+        .form-group {
+            margin: 10px;
+        }
+        h1 {
+            text-decoration-color: blue;
+        }
+    </style>
+</head>
 <body>
 	<th:block layout:fragment="header">
 		<div class="col-xs-4 text-center">
-			<h1>L O G I N</h1>	
+			<h1>L O G I N</h1>
 		</div>
 	</th:block>
     <th:block layout:fragment="content">
@@ -18,7 +39,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Sign In with your Account</h4>
                             <p class="card-text">
-                                Enter your eAuction Username and Password below, to sign in.
+                                Enter your account Username and Password below, to sign in.
                             </p>
                             <div>
                                 <form name="formLogin" th:action="@{/home/log_in}" method="post">
@@ -38,7 +59,7 @@
                                         <label for="password">Password</label>
                                         <input id="password" name="password" type="password" class="form-control"/>
                                     </div>
-                                    <div style="float:right;">
+                                    <div class="btn">
 <!--                                        <a href="/home/forgot_password" >Forgot password?</a>-->
                                         <a href="/user/register" class="btn btn-primary">Register</a>
 <!--                                        <a href="/home" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;-->
@@ -54,7 +75,7 @@
         </div>
 
     </th:block>
-    
+
     <th:block layout:fragment="footer"></th:block>
 </body>
 </html>
