@@ -48,10 +48,10 @@ public class BlockRegController {
         List<Student> studentList = new ArrayList<>();
         //    block.setCourses(courses);
 
-        courses.stream().map(course -> faculties.addAll(course.getFacultyList()));
-        courses.stream().map(course -> studentList.addAll(course.getStudentList()));
-        faculties.stream().forEach(fa -> System.out.println(".............." + fa.getFacultyName()));
-        studentList.stream().forEach(student -> System.out.println("................." + student.getStudentID()));
+//        courses.stream().map(course -> faculties.addAll(course.getFacultyList()));
+//        courses.stream().map(course -> studentList.addAll(course.getStudentList()));
+//        faculties.stream().forEach(fa -> System.out.println(".............." + fa.getFacultyName()));
+//        studentList.stream().forEach(student -> System.out.println("................." + student.getStudentID()));
         //  System.out.println("_____________"+ faculties.get(0).getEmail());
         model.addAttribute("students", studentList);
         model.addAttribute("faculties", faculties);

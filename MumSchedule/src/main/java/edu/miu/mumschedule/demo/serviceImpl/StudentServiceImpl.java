@@ -53,6 +53,10 @@ public class StudentServiceImpl implements StudentService {
 
 
 	}
+	@Override
+	public Student addStudent(Student student) {
+		return studentDao.save(student);
+	}
 
 	@Override
 	public Student findByName(String userName) {

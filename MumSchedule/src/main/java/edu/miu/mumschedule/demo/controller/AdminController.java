@@ -108,10 +108,10 @@ public class AdminController {
         List<String> entryMonth = new ArrayList<String>();
         List<Block> blockList=new ArrayList<>();
         for(int i=0; i<entryList.size(); i++) {
-            entryMonth.add(entryList.get(i).getMonth().toString());
+            //entryMonth.add(entryList.get(i).getMonth().toString());
         }
         for(int i=0; i<entryList.size(); i++) {
-            blockList.addAll(entryList.get(i).getBlockList());
+           // blockList.addAll(entryList.get(i).getBlockList());
         }
         //  List<String> blockNames=blockList.stream().map(Block::getBlockName).collect(Collectors.toList());
         model.addAttribute("entryMonth",entryMonth);

@@ -16,6 +16,7 @@ public List<Student> findAll();
 	 Student findByName(String userName);
 
   //  Student findByEmail(String email);
+  public Student addStudent(Student student);
 
 	Student findStudentByEmail(String email);
 }
